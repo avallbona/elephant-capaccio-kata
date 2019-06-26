@@ -8,11 +8,8 @@ def enter_params():
 
 
 def do_calculation(num_items, price, state):
-    price = int(num_items) * float(price)
-
     # discounts
-
-    total = float(num_items * price)
+    total = round(float(num_items * price), 2)
 
     if 0 < total < 1000.0:
         disc = 0.0
@@ -36,8 +33,8 @@ def do_calculation(num_items, price, state):
         'CA': 0.0825,
     }
 
-    base = total - (total * disc)
-    final = base + (base * taxes.get(state, 0))
+    base = total - round((total * disc), 2)
+    final = base + round((base * taxes.get(state, 0)), 2)
 
     return final
 
